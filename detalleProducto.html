@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="detalleProducto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./assests/logo.png" alt="Perfumes Import">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="quienes-somos.html">¿Quienes somos?</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="buscador" placeholder="Buscar productos...">
+            <button id="btn-buscar"><i class="fa fa-search"></i></button>
+        </div>
+        <a href="error404.html" class="cart">
+            <div class="icons">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <a href="login.html" id="login-link">
+                <div class="icons">
+                    <i class="fa fa-user-circle" id="user-icon"></i>
+                </div>
+            </a>
+        </a>
+    </header>
+
+    <main class="detalle-producto">
+        <div class="product-image">
+            <img id="detalle-imagen" src="" alt="Imagen del Producto">
+        </div>
+        <div class="product-info">
+            <h1 id="detalle-nombre"></h1>
+            <p id="detalle-precio"></p>
+            <p><strong>Volumen de unidad:</strong> <span id="detalle-volumen"></span></p>
+
+            <div class="quantity-selector">
+                <label>Cantidad</label>
+                <button id="decrementar">-</button>
+                <span id="cantidad">1</span>
+                <button id="incrementar">+</button>
+                <span id="stock-disponible"></span>
+            </div>
+
+            <button id="btn-comprar" class="btn-comprar">Comprar ahora</button>
+        </div>
+    
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p><i class="fa fa-phone"></i> 2604 537 326</p>
+            <p><i class="fa fa-envelope"></i> perfumesimport@gmail.com</p>
+            <p>Lun - Sab 9:00 – 20:00</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="FAQ.html" class="footer-link">Preguntas frecuentes</a>
+            <a href="medios.html" class="footer-link">Medios de pago</a>
+            <a href="arrepentimiento.html" class="footer-link">Botón de arrepentimiento</a>
+        </div>
+
+        <div class="security">
+            <p>Compra 100% segura</p>
+            <p>Nuestro sitio garantiza una compra segura y confiable para que nuestros clientes reciban sus productos en las mejores condiciones.</p>
+        </div>
+
+        <div class="social-media">
+            <a href="https://www.instagram.com/perfumesimport.sr/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/home" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://x.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/home" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+    <script>
+            document.getElementById("btn-comprar").addEventListener("click", () => {
+        const numeroWhatsApp = "541234567890"; // Reemplaza con tu número
+        const mensaje = encodeURIComponent("Hola, estoy interesado en este producto.");
+        window.location.href = `https://wa.me/${+542604537326}?text=${"Contactate con Perfumes import por Whatsapp para continuar con tu compra"}`;
+    });
+    </script>
+    <script src="detalleProducto.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>
