@@ -193,3 +193,8 @@ footer div {
 .social-media a:hover {
     color: #fff;
 }
+
+
+.product-list img {
+   height: 200px;
+}

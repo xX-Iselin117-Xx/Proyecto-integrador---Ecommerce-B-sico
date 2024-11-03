@@ -1,6 +1,4 @@
-
-// Productos de ejemplo
-const productos = [
+const productos = JSON.parse(localStorage.getItem("productos")) || [
     { id: 1, nombre: "Invictus Legend 100 ml - Paco Rabanne", precio: 156000, imagen: "assests/perfumes/invictus-legend.png", categoria: "hombre", volumen: "100ml", descuento: 40 },
     { id: 2, nombre: "Invictus Platinum edp 100 ml - Paco Rabanne", precio: 120000, imagen: "assests/perfumes/invictus-platinum.png", categoria: "hombre", volumen: "100ml", descuento: 30 },
     { id: 3, nombre: "One Million Parfum 100 ml - Paco Rabanne", precio: 93000, imagen: "assests/perfumes/one-million-parfum.png", categoria: "hombre", volumen: "100ml", descuento: 20 },
@@ -21,6 +19,13 @@ const productos = [
     { id: 18, nombre: "The One Gold Limited Edition 100ml - Dolce Gabbana", precio: 105000, imagen: "assests/perfumes/dolce.png", categoria: "mujer", volumen: "100ml", descuento: 20 },
 ];
 
+function actualizarLocalStorage() {
+    localStorage.setItem("productos", JSON.stringify(productos));
+}
+
+// Llamar a esta función después de añadir o eliminar productos para mantener sincronización
+actualizarLocalStorage();
+
 // Guardar productos en LocalStorage al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem("productos")) {
@@ -31,6 +36,59 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("btn-buscar").addEventListener("click", () => {
     window.location.href = "error404.html"; // Redirige a la página de error
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const isAdminLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true"; // Verificar como cadena
+
+    // Selecciona los botones de gestión y cierre de sesión
+    const gestionProductosBtn = document.getElementById("gestion-productos-btn");
+    const cerrarSesionBtn = document.getElementById("cerrar-sesion-btn");
+
+    // Mostrar u ocultar botones según el estado de la sesión
+    if (isAdminLoggedIn) {
+        gestionProductosBtn.style.display = "inline-block"; // Muestra gestión de productos
+        cerrarSesionBtn.style.display = "inline-block"; // Muestra cerrar sesión
+    } else {
+        gestionProductosBtn.style.display = "none";
+        cerrarSesionBtn.style.display = "none";
+    }
+
+    // Cerrar sesión
+    cerrarSesionBtn.addEventListener("click", () => {
+        localStorage.removeItem("isAdminLoggedIn"); // Elimina el estado de sesión
+        alert("Sesión cerrada");
+        window.location.href = "index.html"; // Redirige al inicio
+    });
+});
+
+
+// Cargar productos de localStorage al iniciar la página
+document.addEventListener("DOMContentLoaded", () => {
+    const productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+    // Función para renderizar productos en el navbar u otras secciones
+    const renderizarProductos = () => {
+        const contenedorProductos = document.getElementById("productos-container");
+        contenedorProductos.innerHTML = ""; // Limpiar contenido previo
+
+        productos.forEach((producto) => {
+            const productoElem = document.createElement("div");
+            productoElem.classList.add("producto-item");
+            productoElem.innerHTML = `
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <h3>${producto.nombre}</h3>
+                <p>Precio: $${producto.precio}</p>
+                ${producto.descuento ? `<p>Descuento: ${producto.descuento}%</p>` : ""}
+                <button onclick="agregarAlCarrito(${producto.id})">Comprar</button>
+            `;
+            contenedorProductos.appendChild(productoElem);
+        });
+    };
+
+    // Llamar a la función de renderizado
+    renderizarProductos();
+});
+
 
 
 

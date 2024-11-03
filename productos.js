@@ -104,3 +104,21 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("volumen-select").addEventListener("change", aplicarFiltros);
 });
 
+// productos.js
+document.addEventListener("DOMContentLoaded", () => {
+    const productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+    // Renderizar productos en productos.html
+    const contenedorProductos = document.getElementById("productos-lista");
+    productos.forEach((producto) => {
+        const productoDiv = document.createElement("div");
+        productoDiv.classList.add("producto");
+        productoDiv.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.nombre}</h3>
+            <p>Precio: $${producto.precio}</p>
+            <button onclick="verDetalle(${producto.id})">Ver Más</button>
+        `;
+        contenedorProductos.appendChild(productoDiv);
+    });
+});
