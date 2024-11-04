@@ -139,31 +139,6 @@ a:hover .icons {
     object-position: center;
 }
 
-
-.main-banner {
-    display: grid;
-    grid-template-columns: 2fr 1fr; 
-    gap: 20px; 
-    background-color: #caa44d;
-    padding: 20px 0;
-}
-
-.banner-item {
-    position: relative;
-}
-
-.banner-item.large {
-    grid-row: span 2; 
-}
-
-.banner-item img {
-    width: 99%;
-    border: 2px solid #000;
-    width: 1300px;
-    height: 300px;
-    margin: 10px;
-}
-
 .text-overlay {
     position: absolute;
     top: 50%;
