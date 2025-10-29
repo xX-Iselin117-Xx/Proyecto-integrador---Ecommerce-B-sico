@@ -13,3 +13,5 @@ setInterval(showNextSlide, 4000);
 document.getElementById("btn-buscar").addEventListener("click", () => {
     window.location.href = "error404.html"; // Redirige a la página de error
 });
+
+//BRIANROCO
